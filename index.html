@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE LINE — Timed Access Transit</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- GATE SCREEN (locked out) -->
+  <div id="gate-screen" class="screen hidden">
+    <div class="gate-inner">
+      <div class="line-badge">⬛ LINE X</div>
+      <h1 class="gate-title">DOORS CLOSED</h1>
+      <p class="gate-sub">You've used your session. Wait for the next train.</p>
+      <div class="next-train-box">
+        <span class="next-label">NEXT TRAIN IN</span>
+        <div id="next-train-timer" class="big-clock">--:--</div>
+      </div>
+      <div class="track-bar">
+        <div id="track-progress" class="track-fill"></div>
+      </div>
+      <p class="flavor-text">Stand clear of the closing doors, please.</p>
+    </div>
+  </div>
+
+  <!-- BOARDING SCREEN (waiting to board) -->
+  <div id="boarding-screen" class="screen hidden">
+    <div class="boarding-inner">
+      <div class="line-badge">🟡 LINE X</div>
+      <h1 class="board-title">TRAIN ARRIVING</h1>
+      <p class="board-sub">A session window is open. Board now — you have limited time.</p>
+      <div class="session-info">
+        <span class="session-label">YOUR RIDE LASTS</span>
+        <div class="session-duration">5:00</div>
+      </div>
+      <button id="board-btn" class="board-btn">BOARD THE TRAIN →</button>
+      <p class="flavor-text">Swipe in before the doors close.</p>
+    </div>
+  </div>
+
+  <!-- ACTIVE SESSION SCREEN -->
+  <div id="session-screen" class="screen hidden">
+    <header class="transit-header">
+      <div class="line-badge small">🟡 LINE X</div>
+      <div class="session-hud">
+        <span class="hud-label">RIDE EXPIRES IN</span>
+        <span id="session-timer" class="hud-clock">5:00</span>
+      </div>
+      <div class="door-indicator" id="door-indicator">DOORS OPEN</div>
+    </header>
+
+    <main class="content-area">
+      <section class="hero-section">
+        <h1 class="content-title">WELCOME ABOARD</h1>
+        <p class="content-body">
+          You're on the train. Enjoy the ride — but it won't last forever.
+          This site operates on a strict schedule, just like the subway.
+          When your time is up, the doors close and you'll need to wait
+          for the next window to re-board.
+        </p>
+      </section>
+
+      <section class="info-grid">
+        <div class="info-card">
+          <div class="card-icon">🕐</div>
+          <h2>Timed Sessions</h2>
+          <p>Every rider gets exactly 5 minutes of access per boarding window. No extensions, no exceptions.</p>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🚇</div>
+          <h2>Fixed Schedule</h2>
+          <p>New trains depart every 10 minutes on the hour. Miss this one? The next one's coming.</p>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">🔒</div>
+          <h2>Door Lock</h2>
+          <p>Once your session ends, the system locks you out automatically. See you on the platform.</p>
+        </div>
+        <div class="info-card">
+          <div class="card-icon">📍</div>
+          <h2>Your Stop</h2>
+          <p>Use your time wisely. Explore, read, linger — but keep an eye on the clock above.</p>
+        </div>
+      </section>
+
+      <section class="announcement-section">
+        <div class="announcement-bar">
+          <span class="ann-label">SYSTEM ANNOUNCEMENT</span>
+          <span class="ann-text" id="announcement-text">Service is running on time. Next session window opens shortly after yours closes.</span>
+        </div>
+      </section>
+    </main>
+
+    <div id="expiry-overlay" class="expiry-overlay hidden">
+      <div class="expiry-inner">
+        <h2>DOORS CLOSING</h2>
+        <p>Your session has ended. Step off the train.</p>
+        <div id="expiry-countdown" class="expiry-count">3</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
